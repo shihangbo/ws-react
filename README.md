@@ -47,3 +47,8 @@ npm i -S redux react-redux @types/react-redux redux-thunk redux-logger @types/re
 ```js
 npm i -S connected-react-router
 ```
+
+#### 代码规范 eslint安装
+```js
+npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
