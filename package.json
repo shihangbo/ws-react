@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "commit": "git-cz",
     "start": "webpack serve",
     "build": "webpack",
     "lint": "eslint src --ext .tsx",

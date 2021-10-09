@@ -53,3 +53,16 @@ npm i -S connected-react-router
 ```js
 npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
+
+#### 持续集成
+```js
+Travis CI 持续集成服务，他绑定github上的项目，只要有新代码，就回自动抓取，然后提供一个运行环境，执行测试，完成构建，部署到服务器
+
+WS_TOKEN: xxx
+WS_REF: xxx
+
+官网：travis-ci.com
+
+1.登录github创建项目获取WS_REF，项目配置 .travis.yml，生成WS_TOKEN
+2.进入官网：travis-ci.com，同步仓库
+```
