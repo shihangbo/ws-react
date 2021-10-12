@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useState,useCallback} from 'react'
+import {useState,useCallback,useEffect} from 'react'
 import {Form,Input,Button, message} from 'antd'
 import {User} from '@/typings/api'
 import request, { AxiosResponse } from '@/api/request';
@@ -32,6 +32,10 @@ function UserAdd(props:Props) {
       username: event.target.value
     })
   }
+  // setUser之后 立即取值 使用useEffect包装
+  useEffect(() => {
+    console.log('new user', user)
+  },[user])
   return (
     <Form onFinish={handleSubmit}>
       <Form.Item
