@@ -9,22 +9,29 @@ import {Provider} from 'react-redux'
 import store from './store'
 
 // 增加路由 连接仓库 连接reducer 组件配置路由
-import {Route,Link,Redirect,Switch} from 'react-router-dom'
+import {Route,Redirect,Switch} from 'react-router-dom'
 import {ConnectedRouter} from 'connected-react-router'
 import history from './history'
+
+// 引入组件库antd
+import 'antd/dist/antd.css'
+import {Layout} from 'antd'
+import NavBar from './components/NavBar'
+let {Content} = Layout
 
 let root = document.getElementById('root')
 let elem = <Provider store={store}>
   <ConnectedRouter history={history}>
-    <ul>
-      <li><Link to="counter1">Counter1</Link></li>
-      <li><Link to="counter2">Counter2</Link></li>
-    </ul>
-    <Switch>
-      <Route path="/counter1" component={Counter1}></Route>
-      <Route path="/counter2" component={Counter2}></Route>
-      <Redirect to="/counter1"></Redirect>
-    </Switch>
+    <Layout>
+      <NavBar />
+      <Content style={{padding:"20px"}}>
+        <Switch>
+          <Route path="/counter1" component={Counter1}></Route>
+          <Route path="/counter2" component={Counter2}></Route>
+          <Redirect to="/counter1"></Redirect>
+        </Switch>
+      </Content>
+    </Layout>
   </ConnectedRouter>
 </Provider>
 

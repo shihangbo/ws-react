@@ -42,6 +42,7 @@ npm i -S react-router-dom @types/react-router-dom connected-react-router
 #### antd安装
 ```js
 npm i -S antd
+npm i style-loader css-loader -D
 ```
 
 #### webpack以及插件安装
