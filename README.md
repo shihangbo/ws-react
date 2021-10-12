@@ -31,7 +31,17 @@ tsc init
 
 #### react安装
 ```js
-npm i -S react react-dom @types/react @types/react-dom react-router-dom @types/react-router-dom
+npm i -S react react-dom @types/react @types/react-dom
+```
+
+#### reactRouter安装
+```js
+npm i -S react-router-dom @types/react-router-dom connected-react-router
+```
+
+#### antd安装
+```js
+npm i -S antd
 ```
 
 #### webpack以及插件安装
@@ -42,11 +52,6 @@ npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin hoist-non-re
 #### redux以及依赖安装
 ```js
 npm i -S redux react-redux @types/react-redux redux-thunk redux-logger @types/redux-logger
-```
-
-#### 依赖安装
-```js
-npm i -S connected-react-router
 ```
 
 #### 代码规范 eslint安装
