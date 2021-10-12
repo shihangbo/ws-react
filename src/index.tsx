@@ -8,10 +8,24 @@ import Counter2 from './components/Counter2';
 import {Provider} from 'react-redux'
 import store from './store'
 
+// 增加路由 连接仓库 连接reducer 组件配置路由
+import {Route,Link,Redirect,Switch} from 'react-router-dom'
+import {ConnectedRouter} from 'connected-react-router'
+import history from './history'
+
 let root = document.getElementById('root')
 let elem = <Provider store={store}>
-  <Counter1 />
-  <Counter2 />
+  <ConnectedRouter history={history}>
+    <ul>
+      <li><Link to="counter1">Counter1</Link></li>
+      <li><Link to="counter2">Counter2</Link></li>
+    </ul>
+    <Switch>
+      <Route path="/counter1" component={Counter1}></Route>
+      <Route path="/counter2" component={Counter2}></Route>
+      <Redirect to="/counter1"></Redirect>
+    </Switch>
+  </ConnectedRouter>
 </Provider>
 
 ReactDOM.render(elem,root)
