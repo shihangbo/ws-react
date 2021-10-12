@@ -16,7 +16,14 @@ module.exports = {
     historyApiFallback:{
       index:'./index.html'
     },
-    port:'9000'
+    port:'9000',
+    proxy: {
+      '/api/': {
+        target: 'http://localhost:20000',
+        pathRewrite: { '^/api': '' },
+        changeOrigin: true
+      }
+    }
   },
   resolve:{
     extensions:['.ts','.tsx','.js','.json'],

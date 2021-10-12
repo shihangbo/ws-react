@@ -45,6 +45,11 @@ npm i -S antd
 npm i style-loader css-loader -D
 ```
 
+#### axios安装
+```js
+npm i -S axios
+```
+
 #### webpack以及插件安装
 ```js
 npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin hoist-non-react-statics
