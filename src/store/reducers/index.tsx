@@ -6,15 +6,20 @@ import counter2,{Counter2State} from './counter2'
 import {connectRouter,RouterState} from 'connected-react-router'
 import history from '../../history';
 
+// 增加reducer
+import user, { UserState } from './user';
+
 export interface CombinedState {
   counter1:Counter1State,
   counter2:Counter2State,
-  router: RouterState
+  router: RouterState,
+  user: UserState
 }
 let reducers:ReducersMapObject<CombinedState, AnyAction> = {
   counter1,
   counter2,
-  router: connectRouter(history)
+  router: connectRouter(history),
+  user,
 }
 // 方法2
 // interface Reducers {
