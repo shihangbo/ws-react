@@ -19,6 +19,9 @@ import {Layout} from 'antd'
 import NavBar from './components/NavBar'
 let {Content} = Layout
 
+// 绘制User组件
+import User from './components/User'
+
 let root = document.getElementById('root')
 let elem = <Provider store={store}>
   <ConnectedRouter history={history}>
@@ -28,6 +31,7 @@ let elem = <Provider store={store}>
         <Switch>
           <Route path="/counter1" component={Counter1}></Route>
           <Route path="/counter2" component={Counter2}></Route>
+          <Route path="/user" component={User}></Route>
           <Redirect to="/counter1"></Redirect>
         </Switch>
       </Content>
