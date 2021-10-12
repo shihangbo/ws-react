@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {useState,useEffect} from 'react'
-import { Table, message, Space } from 'antd'
+import { Table, message, Space, Button } from 'antd'
 import {User,UserListResponse} from '@/typings/api'
 import request, { AxiosResponse } from '@/api/request';
 import { RouteComponentProps, Link } from 'react-router-dom';
@@ -48,14 +48,17 @@ function UserList(props:Props) {
     //   ),
     // }
   ]
+  // 定义分页
+  let limit = 10
+  let [offset, setOffset] = useState(0)
   let [users,setUsers] = useState<Array<User>>(props.list)
   useEffect(()=>{
     (async function(){
-      // 优化：优化UserList接口 拉取多次变为拉取一次
+      // !!!优化：优化UserList接口 拉取多次变为拉取一次
       if (users.length === 0) {
         console.log('请求UserList接口')
         // 接口请求
-        // let response:AxiosResponse<UserListResponse> = await request.get<UserListResponse, AxiosResponse<UserListResponse>>('/api/users')
+        // let response:AxiosResponse<UserListResponse> = await request.get<UserListResponse, AxiosResponse<UserListResponse>>(`/api/users?limit=${limit}&offset=${offset}`)
         // moke数据
         let response = {
           data: {
@@ -78,22 +81,33 @@ function UserList(props:Props) {
         }
         let {data,code} = response.data
         if (code === 0) {
-          // 当前组件保存数据 - 会触发视图更新！！！
+          // 当前组件保存数据 - 会触发视图更新!!!
           setUsers(data)
-          // 派发user仓库保存数据：连接仓库 保存到仓库 - 不会触发视图更新！！！
+          setOffset(offset + data.length)
+          // 派发user仓库保存数据：连接仓库 保存到仓库 - 不会触发视图更新!!!
           props.storeUser(data)
         } else {
           message.error('请求用户列表失败')
         }
       }
     })()
-  },[])
+  },[offset])
+  const refresh = () => {
+    let data = users.slice(0, users.length - 1)
+    setUsers(data)
+    props.storeUser(data)
+    // 刷新数据
+    setOffset(users.length)
+  }
   
-  return (<Table
-    columns={columns}
-    dataSource={users}
-    rowKey={(row:User) => row._id}
-  ></Table>)
+  return (<>
+    <Button type="primary" onClick={refresh} style={{marginBottom:'20px'}}>刷新</Button>
+    <Table
+      columns={columns}
+      dataSource={users}
+      rowKey={(row:User) => row._id}
+    ></Table>
+  </>)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(UserList) 
