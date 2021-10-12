@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useState} from 'react'
+import {useState,useCallback} from 'react'
 import {Form,Input,Button, message} from 'antd'
 import {User} from '@/typings/api'
 import request, { AxiosResponse } from '@/api/request';
@@ -9,7 +9,8 @@ import { RouteComponentProps } from 'react-router-dom';
 type Props = RouteComponentProps
 function UserAdd(props:Props) {
   let [user, setUser] = useState<User>({} as User)
-  const handleSubmit = () => {
+  // useCallback包装的函数 会被返回，不会重复创建，会有数据缓存问题，一定要关联里面的数据，一旦数据更新函数重新返回
+  const handleSubmit = useCallback(() => {
     if (user && user.username) {
       // request.post('/api/user', user).then((response:AxiosResponse<UserAddResponse>) => {
       //   let {data,code} = response.data
@@ -24,7 +25,7 @@ function UserAdd(props:Props) {
     } else {
       message.error('请输入用户名')
     }
-  }
+  }, [user])
   const handleNameChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...user,
