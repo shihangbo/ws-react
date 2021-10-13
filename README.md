@@ -1,7 +1,7 @@
 ## react + ts
 
 
-### 创建项目
+### 一期创建项目：“react + typescript”
 
 #### 良好的commit
 ```js
@@ -76,4 +76,22 @@ WS_REF: xxx
 
 1.登录github创建项目获取WS_REF，项目配置 .travis.yml，生成WS_TOKEN
 2.进入官网：travis-ci.com，同步仓库
+```
+
+### 二期全栈项目：“前端项目 + 后端项目”
+#### 前端：react全家桶
+#### 后端：express全家桶
+
+#### 项目升级，安装依赖包
+```js
+npm i -S react-transition-group @types/react-transition-group react-swipe @types/react-swipe qs @types/qs
+
+npm i -D html-webpack-plugin
+
+npm i -D less-loader less url-loader file-loader
+
+npm i -S redux-promise @types/redux-promise
+
+// 后端
+npm i -S express express-session body-parser cors
 ```

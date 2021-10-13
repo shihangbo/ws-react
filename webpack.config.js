@@ -2,13 +2,14 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+let mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 module.exports = {
-  mode:'development',
-  devtool:false,
+  mode,
+  devtool:'source-map',
   entry:'./src/index.tsx',
   output:{
     path:path.join(__dirname, 'dist'),
-    filename:'[name].[hash:5].js'
+    filename:'bundle.js'
   },
   devServer:{
     hot:true,
@@ -28,18 +29,33 @@ module.exports = {
   resolve:{
     extensions:['.ts','.tsx','.js','.json'],
     alias:{
-      '@':path.resolve('src')
+      '@':path.resolve(__dirname,'src'),
+      '~':path.resolve(__dirname,'node_modules')
     }
   },
   module:{
     rules:[
       {
-        test:/.tsx?$/,
-        use:'ts-loader'
+        test:/\.(t|j)sx?$/,
+        loader:'ts-loader',
+        exclude:/node_modules/
       },
       {
-        test:/.css$/,
+        test:/\.(t|j)sx?$/,
+        enforce:'pre',
+        loader:'source-map-loader'
+      },
+      {
+        test:/\.css$/,
         use:['style-loader','css-loader']
+      },
+      {
+        test:/\.less$/,
+        use:['style-loader','css-loader','less-loader']
+      },
+      {
+        test:/\.(jpg|png|gif|svg|jpeg)$/,
+        use:['url-loader']
       }
     ]
   },

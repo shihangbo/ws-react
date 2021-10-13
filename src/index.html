@@ -5,13 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>react+ts</title>
-  <style>
-    .title {
-      color: red;
-    }
-  </style>
 </head>
 <body>
+  <script>
+    // 设置根fontSize
+    // 如果屏幕宽度为750px，1rem = 100px
+    // iphone 6 1rem = 50px
+    (function(){
+      function refreshRem() {
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px'
+      }
+      refreshRem()
+      window.addEventListener('resize',refreshRem,false)
+    })()
+  </script>
   <div id="root"></div>
 </body>
 </html>
