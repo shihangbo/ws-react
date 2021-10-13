@@ -18,6 +18,7 @@ class NavBar extends Component<Props> {
           <Menu.Item><Link to="/counter1">Counter1</Link></Menu.Item>
           <Menu.Item><Link to="/counter2">Counter2</Link></Menu.Item>
           <Menu.Item><Link to="/user">用户管理</Link></Menu.Item>
+          <Menu.Item><Link to="/helloWorld">新手上路</Link></Menu.Item>
         </Menu>
       </Layout.Header>
     )

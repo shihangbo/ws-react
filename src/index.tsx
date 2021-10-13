@@ -22,6 +22,11 @@ let {Content} = Layout
 // 绘制User组件
 import User from './components/User'
 
+// 绘制 HelloWork 组件
+import HelloWorld from './components/HelloWorld/HelloWorld'
+import './components/HelloWorld/helloWorld.css'
+
+
 let root = document.getElementById('root')
 let elem = <Provider store={store}>
   <ConnectedRouter history={history}>
@@ -32,6 +37,7 @@ let elem = <Provider store={store}>
           <Route path="/counter1" component={Counter1}></Route>
           <Route path="/counter2" component={Counter2}></Route>
           <Route path="/user" component={User}></Route>
+          <Route path="/helloWorld" component={HelloWorld}></Route>
           <Redirect to="/counter1"></Redirect>
         </Switch>
       </Content>
