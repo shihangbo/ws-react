@@ -6,6 +6,6 @@
     "typescriptreact"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    // "source.fixAll": true
   }
 }

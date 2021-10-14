@@ -26,11 +26,28 @@ import User from './components/User'
 import HelloWorld from './components/HelloWorld/HelloWorld'
 import './components/HelloWorld/helloWorld.css'
 
+// 二期项目
+import {ConfigProvider} from 'antd'
+import zh_CN from 'antd/lib/locale-provider/zh_CN'
+import './assets/style/common.less'
+import Home from './routes/Home' // routes路由组件
+import Mine from './routes/Mine'
+import Profile from './routes/Profile'
 
 let root = document.getElementById('root')
 let elem = <Provider store={store}>
   <ConnectedRouter history={history}>
-    <Layout>
+    <ConfigProvider locale={zh_CN}>
+      <main className="main-container">
+        <Switch>
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/mine" exact component={Mine}></Route>
+          <Route path="/profile" exact component={Profile}></Route>
+          <Redirect to="/"></Redirect>
+        </Switch>
+      </main>
+    </ConfigProvider>
+    {/* <Layout>
       <NavBar />
       <Content style={{padding:"20px"}}>
         <Switch>
@@ -41,7 +58,7 @@ let elem = <Provider store={store}>
           <Redirect to="/counter1"></Redirect>
         </Switch>
       </Content>
-    </Layout>
+    </Layout> */}
   </ConnectedRouter>
 </Provider>
 

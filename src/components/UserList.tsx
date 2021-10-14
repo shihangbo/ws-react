@@ -5,7 +5,7 @@ import {User,UserListResponse} from '@/typings/api'
 import request, { AxiosResponse } from '@/api/request';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { CombinedState } from '@/store/reducers';
+import { CombinedState } from '@/typings/state';
 import { UserState } from '../store/reducers/user';
 import { Dispatch } from 'redux';
 import * as types from '@/store/action-types'

@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Component} from 'react'
 import {connect} from 'react-redux'
 import { Dispatch } from 'redux';
-import { CombinedState } from '@/store/reducers'
+import { CombinedState } from '@/typings/state'
 import { Counter1State } from '@/store/reducers/counter1'
 import * as types from '@/store/action-types';
 import {LocationDescriptorObject,LocationState} from 'history'
@@ -19,7 +19,6 @@ let mapDispathToProps = (dispatch:any) => ({
     dispatch((dispatch:any, getState:any) => {
       setTimeout(() => {
         dispatch({type: types.ADD1})
-        console.log(1111, getState())
       }, 1000)
     })
   },
