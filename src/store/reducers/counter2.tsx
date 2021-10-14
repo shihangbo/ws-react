@@ -1,8 +1,6 @@
 import * as types from '../action-types'
 import {AnyAction} from 'redux'
-export interface Counter2State {
-  number:number
-}
+import {Counter2State} from '@/typings/state'
 let initialState:Counter2State= {
   number: 1
 }

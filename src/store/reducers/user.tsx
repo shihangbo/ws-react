@@ -1,10 +1,7 @@
 import * as types from '@/store/action-types'
-import {User} from '@/typings/api'
 import { AnyAction } from 'redux';
+import {UserState} from '@/typings/state'
 
-export interface UserState {
-  list: Array<User>
-}
 let initialState:UserState = {
   list: []
 }

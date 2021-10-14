@@ -1,8 +1,5 @@
 import { AnyAction } from 'redux';
-
-export interface MineState{
-
-}
+import {MineState} from '@/typings/state'
 
 let initialState:MineState = {
 

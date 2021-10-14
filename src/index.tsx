@@ -14,7 +14,7 @@ import {ConnectedRouter} from 'connected-react-router'
 import history from './history'
 
 // 引入组件库antd
-import 'antd/dist/antd.css'
+// import 'antd/dist/antd.css'
 import {Layout} from 'antd'
 import NavBar from './components/NavBar'
 let {Content} = Layout
@@ -30,9 +30,10 @@ import './components/HelloWorld/helloWorld.css'
 import {ConfigProvider} from 'antd'
 import zh_CN from 'antd/lib/locale-provider/zh_CN'
 import './assets/style/common.less'
-import Home from './routes/Home' // routes路由组件
+import Home from './routes/Home'
 import Mine from './routes/Mine'
 import Profile from './routes/Profile'
+import Tabs from './components/Tabs'
 
 let root = document.getElementById('root')
 let elem = <Provider store={store}>
@@ -46,6 +47,7 @@ let elem = <Provider store={store}>
           <Redirect to="/"></Redirect>
         </Switch>
       </main>
+      <Tabs />
     </ConfigProvider>
     {/* <Layout>
       <NavBar />

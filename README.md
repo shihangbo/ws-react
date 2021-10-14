@@ -92,6 +92,10 @@ npm i -D less-loader less url-loader file-loader
 
 npm i -S redux-promise @types/redux-promise
 
+npm i -S @ant-design/icons
+
+npm i -D px2rem-loader lib-flexible
+
 // 后端
 npm i -S express express-session body-parser cors
 ```

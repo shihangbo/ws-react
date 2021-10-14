@@ -1,8 +1,6 @@
 import { AnyAction } from 'redux';
+import {HomeState} from '@/typings/state'
 
-export interface HomeState{
-
-}
 let initialState:HomeState = {
 
 }

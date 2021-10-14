@@ -3,7 +3,7 @@ import {Component} from 'react'
 import {connect} from 'react-redux'
 import { Dispatch } from 'redux';
 import { CombinedState } from '@/typings/state'
-import { Counter1State } from '@/store/reducers/counter1'
+import {Counter1State} from '@/typings/state'
 import * as types from '@/store/action-types';
 import {LocationDescriptorObject,LocationState} from 'history'
 import { push } from 'connected-react-router'
