@@ -1,9 +1,65 @@
 
 import * as React from 'react'
+import {useState} from 'react'
+import classnames from 'classnames'
+import {createFromIconfontCN} from '@ant-design/icons'
+import './index.less'
+import {duration,defaultStyle,transitionStyles} from '@/assets/style/reactTransitionGroup'
+import { Transition } from 'react-transition-group'
 
-function HomeHeader () {
+let logo = require('@/assets/imgs/logo.png')
+// 如果是require加载的话，返回值的default属性才是地址
+const IconFont = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
+});
+
+interface Props {
+  currentCategory:string, // 当前分类
+  setCurrentCategory: (currentCategory:string) => any
+}
+function HomeHeader (props: Props) {
+  let [isMenuVisble, setIsMenuVisble] = useState(false)
+  const setCurrentCategory = (event: React.MouseEvent<HTMLUListElement>) => {
+    let target:HTMLUListElement = event.target as HTMLUListElement
+    let category = target.dataset.category
+    props.setCurrentCategory(category || '')
+    setIsMenuVisble(false)
+  }
   return (
-    <div>111</div>
+    <header className="home-header">
+      <div className="logo-header">
+        <img src={logo.default} />
+        <IconFont type="icon-tuichu" onClick={() => setIsMenuVisble(!isMenuVisble)}/>
+      </div>
+      <Transition
+        in={isMenuVisble}
+        timeout={duration}
+      >
+        {(state:string) => (
+          <ul
+            style={{
+              ...defaultStyle,
+              ...transitionStyles[state]
+            }}
+            className="category"
+            onClick={setCurrentCategory}
+          >
+            <li data-category="all" className={classnames({active:props.currentCategory === "all"})}>全部课程</li>
+            <li data-category="react" className={classnames({active:props.currentCategory === "react"})}>react</li>
+            <li data-category="vue" className={classnames({active:props.currentCategory === "vue"})}>vue</li>
+          </ul>
+        )}
+      </Transition>
+      {
+        isMenuVisble && (
+          <ul className="category" onClick={setCurrentCategory}>
+            <li data-category="all" className={classnames({active:props.currentCategory === "all"})}>全部课程</li>
+            <li data-category="react" className={classnames({active:props.currentCategory === "react"})}>react</li>
+            <li data-category="vue" className={classnames({active:props.currentCategory === "vue"})}>vue</li>
+          </ul>
+        )
+      }
+    </header>
   )
 }
 

@@ -96,6 +96,11 @@ npm i -S @ant-design/icons
 
 npm i -D px2rem-loader lib-flexible
 
+npm i -S classnames
+npm i -D @types/classnames
+
+npm i -S react-transition-group
+
 // 后端
 npm i -S express express-session body-parser cors
 ```

@@ -14,7 +14,7 @@ export interface UserState {
 
 // 二期项目
 export interface HomeState{
-
+  currentCategory:string
 }
 export interface MineState{
 
