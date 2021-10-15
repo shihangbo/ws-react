@@ -7,8 +7,13 @@ import './index.less'
 import {duration,defaultStyle,transitionStyles} from '@/assets/style/reactTransitionGroup'
 import { Transition } from 'react-transition-group'
 
-let logo = require('@/assets/imgs/logo.png')
-// 如果是require加载的话，返回值的default属性才是地址
+// let logo = require('@/assets/imgs/logo.png')
+// require获取的图片，logo.default获取图片地址
+
+import logo from '@/assets/imgs/logo.png'
+// import获取的图片，直接使用logo获取地址
+
+
 const IconFont = createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
 });
@@ -28,7 +33,7 @@ function HomeHeader (props: Props) {
   return (
     <header className="home-header">
       <div className="logo-header">
-        <img src={logo.default} />
+        <img src={logo} />
         <IconFont type="icon-tuichu" onClick={() => setIsMenuVisble(!isMenuVisble)}/>
       </div>
       <Transition
