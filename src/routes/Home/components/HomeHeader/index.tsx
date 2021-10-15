@@ -4,7 +4,7 @@ import {useState} from 'react'
 import classnames from 'classnames'
 import {createFromIconfontCN} from '@ant-design/icons'
 import './index.less'
-import {duration,defaultStyle,transitionStyles} from '@/assets/style/reactTransitionGroup'
+import {duration,defaultStyle,transitionStyles, TransitionStyles} from '@/assets/style/reactTransitionGroup'
 import { Transition } from 'react-transition-group'
 
 // let logo = require('@/assets/imgs/logo.png')
@@ -40,7 +40,7 @@ function HomeHeader (props: Props) {
         in={isMenuVisble}
         timeout={duration}
       >
-        {(state:string) => (
+        {(state:keyof TransitionStyles) => (
           <ul
             style={{
               ...defaultStyle,
