@@ -19,8 +19,20 @@ export interface HomeState{
 export interface MineState{
 
 }
+export interface StoreUser {
+  username: string
+  email: string
+  avatar: string
+}
+export enum LOGIN_TYPES {
+  UN_VALIDATE = 'UN_VALIDATE',
+  LOGINED = 'LOGINED',
+  UN_LOGINED = 'UN_LOGINED'
+}
 export interface ProfileState{
-
+  loginState: LOGIN_TYPES
+  user: StoreUser | null
+  error: string | null
 }
 
 export interface CombinedState {
